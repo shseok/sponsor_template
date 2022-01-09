@@ -1,0 +1,136 @@
+body {
+    font-family: "Lato", sans-serif;
+}
+
+.main-head{
+    /* height: 150px; */
+    background: #FFF;   
+}
+
+.sidenav {
+    height: 100%;
+    background-color: #000;
+    overflow-x: hidden;
+    padding-top: 20px;
+}
+
+
+.main {
+    padding: 0px 10px;
+}
+
+@media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+}
+
+@media screen and (max-width: 450px) {
+    .login-form{
+        margin-top: 10%;
+    }
+
+    .login-form{
+        margin-top: 10%;
+    }
+}
+
+@media screen and (min-width: 768px){
+    .main{
+        margin-left: 40%; 
+    }
+
+    .sidenav{
+        width: 40%;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+    }
+
+    .login-form{
+        margin-top: 25%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .login-form{
+        margin-top: 20%;
+    }
+}
+
+
+.login-main-text{
+    margin-top: 5%;
+    padding: 60px;
+    color: #fff;
+}
+
+.login-main-text h2{
+    font-weight: 300;
+}
+
+.login-main-text p{
+    padding-top: 1.1rem;
+}
+
+.contents{
+    padding: 0 60px 60px 60px;
+    color:white;
+}
+
+.contents ul{
+    list-style:none;
+    padding: 0;
+}
+
+.contents ul li{
+    padding-bottom:15px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all .2s ease-in-out;
+}
+
+.contents ul li:hover{
+    transform: scale(1.1);
+}
+
+.contents ul li a{
+    text-decoration: none;
+    color: #fff;
+}
+
+.button-container{
+    text-align: center;
+}
+
+.question{
+    text-align: center;
+    padding: 1.2rem;
+}
+
+.btn-black{
+    background-color: #000 !important;
+    color: #fff;
+}
+
+.login-form{
+    display:flex;
+    flex-direction: column;
+}
+
+.login-form .form-control {
+    border: none;
+    background: none;
+    border-bottom: 1px solid #000;
+    border-radius: 0px !important;
+    color: #fff;
+}
+.login-form .form-control:focus,
+.login-form .form-control:hover{
+  border:none;
+  margin: 0 auto;
+  background: none;
+  box-shadow: none;
+  border-bottom: 1px solid #ccc;
+  color: #fff;
+}
