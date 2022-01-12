@@ -1,5 +1,5 @@
 # project
-소상공인을 위한 후원 디자인
+소상공인을 위한 후원 플랫폼 디자인
 
 # image
 - https://undraw.co/illustrations

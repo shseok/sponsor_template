@@ -110,7 +110,7 @@ body {
     background: none;
     border-bottom: 1px solid #000;
     border-radius: 0px !important;
-    color: #fff;
+    color: #000;
 }
 .register-form .form-control:focus,
 .register-form .form-control:hover{
@@ -119,5 +119,5 @@ body {
   background: none;
   box-shadow: none;
   border-bottom: 1px solid #ccc;
-  color: #fff;
+  color: #000;
 }

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.10.2/css/all.css">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link rel="stylesheet" href="business.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="sidenav">
+        <div class="login-main-text">
+            <h2>사업자 등록하기</h2>
+            <p>문의 남겨주시면 빠른 연락드리겠습니다.</p>
+            <br />
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe ea vitae debitis quisquam quae distinctio
+                exercitationem accusantium voluptatibus perspiciatis est doloremque ad, consequuntur, recusandae
+                reprehenderit nobis dolores tenetur sit. Consectetur.</p>
+            <br />
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe ea vitae debitis quisquam quae distinctio
+                exercitationem accusantium voluptatibus perspiciatis est doloremque ad, consequuntur, recusandae
+                reprehenderit nobis dolores tenetur sit. Consectetur.</p>
+            <br />
+            <p>상담신청을 위하여 남겨주신 개인정보는 개인정보취급방침에
+                의거하여 100% 안전하게 보호됩니다.</p>
+        </div>
+    </div>
+    <div class="main">
+        <div class="register-container">
+            <div class="form-container">
+                <form id="myForm">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="이름(상호)" value="" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="아이디" value="" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" class="form-control" placeholder="휴대폰 번호(-를 넣어주세요)" value=""
+                            pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="업종(간략히 작성)" value="" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-control" placeholder="문의사항" value=""></textarea>
+                    </div>
+                    <div class="check">
+                        <input type="checkbox" class="mr-2" required><a class="_1leqztg"
+                            href="https://www.k-newbiz.org/privacy_policy">개인정보취급방침</a><span>에
+                            동의합니다.</span></input>
+                    </div>
+                    <div class="button-container mt-4">
+                        <input type="button" class="btn btn-black" id="btn-open-popup" value="신청하기"></input>
+                    </div>
+                    <div class="modal">
+                        <div class="modal-content">
+                            <div class="modal-header">확인</div>
+                            <div class="modal-body">
+                                <p>축하합니다! 사업자 등록이 완료되었습니다. <br />홈페이지로 이동하시겠습니까?</p>
+                            </div>
+                            <button type="button" class="btn btn-black" onclick='newPage()'>이동하기</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="scripts.js"></script>
+
+</html>

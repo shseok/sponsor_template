@@ -100,6 +100,11 @@ body {
     padding: 1.2rem;
 }
 
+.go-register{
+    text-align: center;
+    margin: 0;
+}
+
 .btn-black{
     background-color: #000 !important;
     color: #fff;
@@ -110,7 +115,7 @@ body {
     background: none;
     border-bottom: 1px solid #000;
     border-radius: 0px !important;
-    color: #fff;
+    color: #000;
 }
 .register-form .form-control:focus,
 .register-form .form-control:hover{
@@ -119,5 +124,5 @@ body {
   background: none;
   box-shadow: none;
   border-bottom: 1px solid #ccc;
-  color: #fff;
+  color: #000;
 }
