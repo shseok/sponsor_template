@@ -7,4 +7,4 @@
 
 # Caution
 - google map을 사용하기 위해 api key가 필요
-- type = submit
+- type = submit or modal (in business_register)
