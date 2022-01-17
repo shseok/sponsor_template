@@ -11487,6 +11487,24 @@ footer.footer .social-link:hover {
   background-repeat: no-repeat;
   background-size: cover;
 }
+
+.masthead .login-container{
+  position: absolute;
+  display: flex;
+  top: 10px;
+  left: 10px;
+  font-weight: 800;
+}
+
+.masthead .login-container a{
+  cursor: pointer;
+  margin-right: 10px;
+  text-decoration: none;
+  color: #000;
+  font-size: 1.1em;
+}
+
+
 .masthead h1, .masthead .h1 {
   font-size: 4rem;
   margin: 0;
