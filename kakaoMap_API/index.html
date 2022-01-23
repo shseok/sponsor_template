@@ -23,13 +23,13 @@
             </div>
 
             <div class="sidebar-header">
-                <h3>Bootstrap Sidebar</h3>
+                <h3>소.후.모</h3>
             </div>
 
             <ul class="list-unstyled components">
-                <p>Dummy Heading</p>
-                <li class="active">
-                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Home</a>
+                <p>후원하기</p>
+                <li>
+                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">검색하기</a>
                     <ul class="collapse list-unstyled" id="homeSubmenu">
                         <li>
                             <a href="#">Home 1</a>
@@ -43,7 +43,7 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="#">About</a>
+                    <a href="../main/index.html">홈페이지이동</a>
                     <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">Pages</a>
                     <ul class="collapse list-unstyled" id="pageSubmenu">
                         <li>
@@ -58,11 +58,15 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="#">Portfolio</a>
-                </li>
-                <li>
                     <a href="#">Contact</a>
                 </li>
+                <div class="input-group rounded my-2">
+                    <div class="form-outline">
+                        <input id="search-input-sidenav" type="search" id="form1" class="form-control"
+                            placeholder="Search" />
+                        <label class="form-label" for="form1"></label>
+                    </div>
+                </div>
             </ul>
         </nav>
         <div id="content">
@@ -76,6 +80,7 @@
             </div>
         </div>
     </div>
+    <!-- sidebar가 열리면 화면을 바깥을 담당 -->
     <div class="overlay"></div>
 </body>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
