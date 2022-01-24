@@ -23,50 +23,19 @@
             </div>
 
             <div class="sidebar-header">
-                <h3>소.후.모</h3>
+                <h3><a href="../main/index.html">소.후.모</a></h3>
             </div>
+            <p class="sidebar-first">후원하기&nbsp;&nbsp;🤝</p>
+            <div id="custom-search-input">
+                <form class="input-group">
+                    <input type="text" class="search-query form-control" placeholder="검색하기" />
+                    <button type="submit" class="btn search-btn">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </form>
+            </div>
+            <ul class="location-list">
 
-            <ul class="list-unstyled components">
-                <p>후원하기</p>
-                <li>
-                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">검색하기</a>
-                    <ul class="collapse list-unstyled" id="homeSubmenu">
-                        <li>
-                            <a href="#">Home 1</a>
-                        </li>
-                        <li>
-                            <a href="#">Home 2</a>
-                        </li>
-                        <li>
-                            <a href="#">Home 3</a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="../main/index.html">홈페이지이동</a>
-                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">Pages</a>
-                    <ul class="collapse list-unstyled" id="pageSubmenu">
-                        <li>
-                            <a href="#">Page 1</a>
-                        </li>
-                        <li>
-                            <a href="#">Page 2</a>
-                        </li>
-                        <li>
-                            <a href="#">Page 3</a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#">Contact</a>
-                </li>
-                <div class="input-group rounded my-2">
-                    <div class="form-outline">
-                        <input id="search-input-sidenav" type="search" id="form1" class="form-control"
-                            placeholder="Search" />
-                        <label class="form-label" for="form1"></label>
-                    </div>
-                </div>
             </ul>
         </nav>
         <div id="content">
@@ -75,8 +44,6 @@
                 <button type="button" id="sidebarCollapse" class="btn btn-warning sidebar-btn">
                     <span><i class="fas fa-bars"></i></span>
                 </button>
-                <script type="text/javascript"
-                    src="//dapi.kakao.com/v2/maps/sdk.js?appkey=37a94671a84adb929ef9bcffca80af2c"></script>
             </div>
         </div>
     </div>
@@ -93,6 +60,8 @@
 <!-- jQuery Custom Scroller CDN -->
 <script
     src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+<script type="text/javascript"
+    src="//dapi.kakao.com/v2/maps/sdk.js?appkey=37a94671a84adb929ef9bcffca80af2c&libraries=services,clusterer,drawing"></script>
 <script src="sidebar.js"></script>
 <script src="map.js"></script>
 
