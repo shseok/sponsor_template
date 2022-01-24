@@ -1,5 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&family=Noto+Sans+KR:wght@300;400;700&display=swap');
+
 body {
-    font-family: "Lato", sans-serif;
+   font-family: 'Noto Sans KR', sans-serif;
 }
 
 .main-head{
@@ -9,7 +11,7 @@ body {
 
 .sidenav {
     height: 100%;
-    background-color: #000;
+    background-color: #002454;
     overflow-x: hidden;
     padding-top: 20px;
 }
@@ -62,20 +64,22 @@ body {
 .login-main-text{
     margin-top: 5%;
     padding: 60px;
-    color: #fff;
 }
 
 .login-main-text h2{
+    font-family: 'Nanum Myeongjo', serif;
     font-weight: 300;
+    color: #fec54a;
 }
 
 .login-main-text p{
     padding-top: 1.1rem;
+    color: #fff;
 }
 
 .contents{
     padding: 0 60px 60px 60px;
-    color:white;
+    color: #fff;
 }
 
 .contents ul{
@@ -91,12 +95,18 @@ body {
 }
 
 .contents ul li:hover{
+    color: #fec54a;
     transform: scale(1.1);
 }
 
 .contents ul li a{
     text-decoration: none;
     color: #fff;
+    transition: all .2s ease-in-out;
+}
+/* anchor tag는 href가 딸려있으면 direct로 적용해줘야 함 */
+.contents ul li a:hover{
+    color: #fec54a;
 }
 
 .button-container{

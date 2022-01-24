@@ -5,10 +5,11 @@
 }
 
 .circle {
-  background-color: orange;
+  background-color: rgb(8, 170, 8);
   border-radius: 50%;
-  height: 200px;
-  width: 200px;
+  height: 40px;
+  width: 40px;
+  margin-top: 10px;
 }
 .slider-content,
 .header-container{
