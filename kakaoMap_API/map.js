@@ -43,6 +43,7 @@ locationBtn.addEventListener('click', () => {
 const searchBtn = document.querySelector('.search-btn');
 const searchContent = document.querySelector('.search-query');
 const form = document.querySelector('.input-group');
+const locationList = document.querySelector('.location-list');
 let searchValue = '';
 
 // 마커를 클릭하면 장소명을 표출할 인포윈도우 입니다
@@ -52,11 +53,17 @@ var ps = new kakao.maps.services.Places();
 
 form.addEventListener('submit', (e) => {
     e.preventDefault();
+    locationList.innerHTML = ``;
+
     const inputDoc = e.target.querySelector('.search-query');
     searchValue = inputDoc.value;
 
-    // 키워드로 장소를 검색합니다
-    ps.keywordSearch(searchValue, placesSearchCB);
+    if (searchValue == '') {
+        alert("다시 검색해주세요 :)"); // ㄴ
+    } else {
+        // 키워드로 장소를 검색합니다
+        ps.keywordSearch(searchValue, placesSearchCB);
+    }
 
     inputDoc.value = '';
     inputDoc.focus();
@@ -65,7 +72,7 @@ form.addEventListener('submit', (e) => {
 // console.log(searchValue); null
 
 // 키워드 검색 완료 시 호출되는 콜백함수 입니다
-function placesSearchCB(data, status, pagination) {
+function placesSearchCB(data, status) {
     if (status === kakao.maps.services.Status.OK) {
 
         // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
@@ -100,8 +107,6 @@ function displayMarker(place) {
         infowindow.open(map, marker);
     });
 }
-
-const locationList = document.querySelector('.location-list');
 
 function createDataList(results) {
     results.map(location => {
