@@ -11298,6 +11298,11 @@ html {
   padding-bottom: 7.5rem;
 }
 
+.second-section{
+  background: #f9f9f9 !important;
+  color: #000;
+}
+
 .content-section-heading h2, .content-section-heading .h2 {
   font-size: 3rem;
 }
@@ -11478,10 +11483,34 @@ footer.footer .social-link:hover {
   height: auto;
   padding-top: 8rem;
   padding-bottom: 8rem;
-  background: linear-gradient(90deg, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.6) 100%), url("../assets/img/bg-bg.jpg");
+  /* background: linear-gradient(90deg, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.6) 100%), url("../assets/video/smartphone.mp4"); */
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.6) 100%);
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+.jb-box {
+  width: 100%;
+  height: auto; 
+  overflow: hidden;
+  margin: 0px auto; 
+  position: relative; 
+}
+
+video {
+  width: 50%;
+}
+
+.jb-text > a{
+  display: block;
+}
+
+.jb-text p { 
+  margin-top: -24px; 
+  text-align: center; 
+  font-size: 48px; 
+  /* color: #ffffff;  */
 }
 
 .masthead .login-container{
@@ -11504,7 +11533,6 @@ footer.footer .social-link:hover {
 .masthead .login-container a:hover{
   color: #47748b;
 }
-
 
 .masthead h1, .masthead .h1 {
   font-size: 4rem;
@@ -11594,8 +11622,4 @@ footer.footer .social-link:hover {
   line-height: 7.5rem;
   font-size: 2.25rem;
   box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.1);
-}
-
-.second-content{
-  color: white;
 }
