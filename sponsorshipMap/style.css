@@ -20,7 +20,6 @@ body{
     background: #002454;
     color: #fff;
     transition: all 0.3s;
-    overflow-y: scroll;
     box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
 }
 
@@ -46,6 +45,38 @@ body{
 #dismiss:hover {
     background: #fff;
     color: #fec54a;
+}
+
+#move-home {
+    width: 35px;
+    height: 35px;
+    line-height: 35px;
+    text-align: center;
+    position: absolute;
+    bottom: 15px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 30px;
+    animation: jump 0.8s ease-in infinite;
+}
+
+#move-home a:hover{
+    color: #fec54a;
+}
+
+#move-home > a{
+    text-decoration: none;
+    color: #fff;
+}
+
+
+@keyframes jump{
+    0%{
+        transform: tramslateY(0);
+    }
+    50%{
+        transform: translateY(-5px);
+    }
 }
 
 .overlay {
@@ -91,16 +122,22 @@ body{
     color: #fec54a;
 }
 
-.location-list{
+#location-container{
+    padding: 20px 0px;
+    height: 545px;
+    overflow-y: scroll;
+}
+
+#location-list{
     padding: 20px 0px;
 }
 
-.location-list .searched-location{
+#location-list .searched-location{
     margin-right: 10px;
     border-bottom: 1px solid #ccc;
 }
 
-.location-list .searched-location .result-inner{
+#location-list .searched-location .result-inner{
     margin: 10px 0;
     padding: 0 10px;
 }
@@ -207,4 +244,8 @@ a[data-toggle="collapse"] {
     -moz-border-radius: 3px;
     border-radius: 3px;
     color:#ccc;
+}
+
+#custom-search-input button > i{
+    font-size: 25px;
 }

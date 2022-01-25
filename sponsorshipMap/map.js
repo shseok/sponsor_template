@@ -43,7 +43,8 @@ locationBtn.addEventListener('click', () => {
 const searchBtn = document.querySelector('.search-btn');
 const searchContent = document.querySelector('.search-query');
 const form = document.querySelector('.input-group');
-const locationList = document.querySelector('.location-list');
+const locationList = document.getElementById('location-list');
+console.log(locationList);
 let searchValue = '';
 
 // 마커를 클릭하면 장소명을 표출할 인포윈도우 입니다
@@ -118,6 +119,7 @@ function createDataList(results) {
             연락처: ${location.phone}</br>
             </div>
         `;
+        console.log(elem);
 
         locationList.appendChild(elem);
     });

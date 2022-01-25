@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    $("#sidebar").mCustomScrollbar({
+    $("#location-container").mCustomScrollbar({
         theme: "minimal"
     });
 
