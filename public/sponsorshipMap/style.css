@@ -205,6 +205,35 @@ a[data-toggle="collapse"] {
     z-index: 2;
 }
 
+.addr-title {
+    font-weight: bold;
+    display: block;
+}
+
+.hAddr {
+    position: fixed;
+    right: 100px;
+    top: 10px;
+    border-radius: 2px;
+    background: #fff;
+    background: rgba(255, 255, 255, 0.8);
+    z-index: 2;
+    padding: 5px;
+}
+
+#centerAddr {
+    display: block;
+    margin-top: 2px;
+    font-weight: normal;
+}
+
+.bAddr {
+    padding: 5px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
 #content .sidebar-btn{
     position: fixed;
     top:0;

@@ -28,3 +28,23 @@
 - https://undraw.co/illustrations
 - https://pixabay.com/ko/photos
 - https://pixabay.com/ko/users/julientromeur-3630051/?tab=videos
+
+# third party middleware 사용
+- express middleware인 cors
+
+
+# 사용
+```
+1. cd SWTemplate
+2. npm install
+3. npm run dev
+```
+
+# Error
+Error: listen EADDRINUSE: address already in use :::8080
+## catch
+window cmd
+- netstat -ano | find "LISTENING" | find "8080"
+    - pid 확인
+- taskkill /f /pid 30448
+    - process kill
