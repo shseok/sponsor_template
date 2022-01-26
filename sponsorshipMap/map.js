@@ -1,3 +1,8 @@
+const markers = [];
+let userLocation = '';
+const basicURL = "http://apis.data.go.kr/B553077/api/open/sdsc2/storeListInDong"
+const serviceKey = "urjek0WtO%2FvvB9TbWitwIaRTZvfcfQI5rmMUToR%2FUSEBzoebVuc%2FKGCY28ySbmMmm2QzS9V9IIDD92bdTJ30fw%3D%3D";
+
 const mapContainer = document.getElementById('map') // 지도를 표시할 div
 const mapOption = {
     center: new kakao.maps.LatLng(37.56646, 126.98121), // 지도의 중심좌표
@@ -12,17 +17,22 @@ function locationLoadSuccess(pos) {
     // 현재 위치 받아오기
     const currentPos = new kakao.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
 
+    console.log(currentPos);
+
     // 지도 이동(기존 위치와 가깝다면 부드럽게 이동)
     map.panTo(currentPos);
 
     // 마커 생성
-    const marker = new kakao.maps.Marker({
+    var marker = new kakao.maps.Marker({
         position: currentPos
     });
+
+    markers.push(marker);
 
     // 기존에 마커가 있다면 제거
     marker.setMap(null);
     marker.setMap(map);
+
 };
 
 function locationLoadError(pos) {
@@ -37,14 +47,14 @@ function getCurrentPosBtn() {
 const locationBtn = document.querySelector('.location-btn');
 locationBtn.addEventListener('click', () => {
     getCurrentPosBtn();
+    queryNearbyUserLocation();
 })
 
-// ------------------------------ 키워드로 장소검색 --------------------------------
+// ----------------------------------------- 키워드로 장소검색 -----------------------------------------
 const searchBtn = document.querySelector('.search-btn');
 const searchContent = document.querySelector('.search-query');
 const form = document.querySelector('.input-group');
 const locationList = document.getElementById('location-list');
-console.log(locationList);
 let searchValue = '';
 
 // 마커를 클릭하면 장소명을 표출할 인포윈도우 입니다
@@ -65,6 +75,9 @@ form.addEventListener('submit', (e) => {
         // 키워드로 장소를 검색합니다
         ps.keywordSearch(searchValue, placesSearchCB);
     }
+    // 기존의 마크를 모두 삭제
+    markers.map(marker => marker.setMap(null));
+    console.log(markers);
 
     inputDoc.value = '';
     inputDoc.focus();
@@ -101,6 +114,8 @@ function displayMarker(place) {
         position: new kakao.maps.LatLng(place.y, place.x)
     });
 
+    markers.push(marker);
+
     // 마커에 클릭이벤트를 등록합니다
     kakao.maps.event.addListener(marker, 'click', function () {
         // 마커를 클릭하면 장소명이 인포윈도우에 표출됩니다
@@ -124,3 +139,95 @@ function createDataList(results) {
         locationList.appendChild(elem);
     });
 }
+
+// ----------------------------------------- 좌표로 주소 얻어내기-----------------------------------------
+
+// 주소-좌표 변환 객체를 생성합니다
+var geocoder = new kakao.maps.services.Geocoder();
+
+var addrMarker = new kakao.maps.Marker(), // 클릭한 위치를 표시할 마커입니다
+    addrInfoWindow = new kakao.maps.InfoWindow({ zindex: 1 }); // 클릭한 위치에 대한 주소를 표시할 인포윈도우입니다
+
+// 현재 지도 중심좌표로 주소를 검색해서 지도 좌측 상단에 표시합니다
+searchAddrFromCoords(map.getCenter(), displayCenterInfo);
+
+// 지도를 클릭했을 때 클릭 위치 좌표에 대한 주소정보를 표시하도록 이벤트를 등록합니다
+kakao.maps.event.addListener(map, 'click', function (mouseEvent) {
+    searchDetailAddrFromCoords(mouseEvent.latLng, function (result, status) {
+        if (status === kakao.maps.services.Status.OK) {
+            var detailAddr = !!result[0].road_address ? '<div>도로명주소 : ' + result[0].road_address.address_name + '</div>' : '';
+            detailAddr += '<div>지번 주소 : ' + result[0].address.address_name + '</div>';
+
+            var content = '<div class="bAddr">' +
+                '<span class="addr-title">법정동 주소정보</span>' +
+                detailAddr +
+                '</div>';
+
+            // 마커를 클릭한 위치에 표시합니다 
+            addrMarker.setPosition(mouseEvent.latLng);
+            addrMarker.setMap(map);
+
+            // markers.push(addrMarker);
+
+            // 인포윈도우에 클릭한 위치에 대한 법정동 상세 주소정보를 표시합니다
+            addrInfoWindow.setContent(content);
+            addrInfoWindow.open(map, addrMarker);
+        }
+    });
+});
+
+// 중심 좌표나 확대 수준이 변경됐을 때 지도 중심 좌표에 대한 주소 정보를 표시하도록 이벤트를 등록합니다
+kakao.maps.event.addListener(map, 'idle', function () {
+    searchAddrFromCoords(map.getCenter(), displayCenterInfo);
+});
+
+function searchAddrFromCoords(coords, callback) {
+    // 좌표로 행정동 주소 정보를 요청합니다
+    geocoder.coord2RegionCode(coords.getLng(), coords.getLat(), callback);
+}
+
+function searchDetailAddrFromCoords(coords, callback) {
+    // 좌표로 법정동 상세 주소 정보를 요청합니다
+    geocoder.coord2Address(coords.getLng(), coords.getLat(), callback);
+}
+
+// 지도 좌측상단에 지도 중심좌표에 대한 주소정보를 표출하는 함수입니다
+function displayCenterInfo(result, status) {
+
+    userLocation = result;
+    if (status === kakao.maps.services.Status.OK) {
+        var infoDiv = document.getElementById('centerAddr');
+
+        for (var i = 0; i < result.length; i++) {
+            // 행정동의 region_type 값은 'H' 이므로
+            if (result[i].region_type === 'H') {
+                infoDiv.innerHTML = result[i].address_name;
+                break;
+            }
+        }
+    }
+}
+
+// ----------------------------------------- 현재 위치에서 얻은 주소로 open API의 행정동 단위 상가업소 조회 -----------------------------------------
+async function queryNearbyUserLocation() {
+    // console.log(userLocation); // displayCenterInfo가 더 빨리 실행되는 로직이므로 결과 확인가능
+
+    // const response = fetch(`${basicURL}?divId=ctprvnCd&key=11&numOfRows=500&pageNo=1&type=json&ServiceKey=${serviceKey}`);
+
+    const response = fetch("http://apis.data.go.kr/B553077/api/open/sdsc2/storeListInDong?divId=ctprvnCd&key=11&numOfRows=500&pageNo=1&type=json&ServiceKey=urjek0WtO%2FvvB9TbWitwIaRTZvfcfQI5rmMUToR%2FUSEBzoebVuc%2FKGCY28ySbmMmm2QzS9V9IIDD92bdTJ30fw%3D%3D");
+    console.log(response);
+    return response.then(res => res.json());
+}
+
+async function getNearbyUserLocation() {
+
+    try {
+        const response = await queryNearbyUserLocation();
+        console.log(response);
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+
+
