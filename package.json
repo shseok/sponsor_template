@@ -2,7 +2,7 @@
   "name": "swtemplate",
   "version": "1.0.0",
   "description": "소상공인을 위한 후원 플랫폼을 설계하고자 한다.",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node app.js",
@@ -19,6 +19,8 @@
   },
   "homepage": "https://github.com/shseok/sponsor_template#readme",
   "dependencies": {
+    "axios": "^0.25.0",
+    "cors": "^2.8.5",
     "express": "^4.17.2"
   },
   "devDependencies": {

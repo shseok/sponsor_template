@@ -35,9 +35,9 @@
 
 # 사용
 ```
-1. npm install
-
-2. npm dev
+1. cd SWTemplate
+2. npm install
+3. npm run dev
 ```
 
 # Error

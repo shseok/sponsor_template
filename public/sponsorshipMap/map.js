@@ -1,7 +1,5 @@
 const markers = [];
 let userLocation = '';
-const basicURL = "http://apis.data.go.kr/B553077/api/open/sdsc2/storeListInDong"
-const serviceKey = "urjek0WtO%2FvvB9TbWitwIaRTZvfcfQI5rmMUToR%2FUSEBzoebVuc%2FKGCY28ySbmMmm2QzS9V9IIDD92bdTJ30fw%3D%3D";
 
 const mapContainer = document.getElementById('map') // 지도를 표시할 div
 const mapOption = {
@@ -214,9 +212,8 @@ async function queryNearbyUserLocation() {
 
     // const response = fetch(`${basicURL}?divId=ctprvnCd&key=11&numOfRows=500&pageNo=1&type=json&ServiceKey=${serviceKey}`);
 
-    const response = fetch("http://apis.data.go.kr/B553077/api/open/sdsc2/storeListInDong?divId=ctprvnCd&key=11&numOfRows=500&pageNo=1&type=json&ServiceKey=urjek0WtO%2FvvB9TbWitwIaRTZvfcfQI5rmMUToR%2FUSEBzoebVuc%2FKGCY28ySbmMmm2QzS9V9IIDD92bdTJ30fw%3D%3D");
-    console.log(response);
-    return response.then(res => res.json());
+
+    // return response.then(res => res.json());
 }
 
 async function getNearbyUserLocation() {

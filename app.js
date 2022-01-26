@@ -1,5 +1,9 @@
-const express = require('express') //express를 설치했기 때문에 가져올 수 있다.
-const app = express()
+const express = require('express'); //모듈 호출
+const app = express();
+const cors = require('cors');
+const axios = require('axios');
+
+app.use(cors());
 
 // 정적파일사용 (css, assts ...)
 app.use(express.static(__dirname + "/public")); // 없으면 main에서 log갈 때 에러
@@ -33,6 +37,13 @@ app.use('/register_sponsored', function (req, resp) {
 app.use('/sponsorshipMap', function (req, resp) {
     resp.sendFile(__dirname + '/public/sponsorshipMap/index.html');
 });
+
+
+const basicURL = "http://apis.data.go.kr/B553077/api/open/sdsc2/storeListInDong";
+const serviceKey = "urjek0WtO%2FvvB9TbWitwIaRTZvfcfQI5rmMUToR%2FUSEBzoebVuc%2FKGCY28ySbmMmm2QzS9V9IIDD92bdTJ30fw%3D%3D";
+axios.get(`${basicURL}?divId=ctprvnCd&key=11&numOfRows=500&pageNo=1&type=json&ServiceKey=${serviceKey}`).then(res => console.log(res));
+
+
 
 app.use(function (req, res, next) {
     res.status(404).send('Sorry cant find that!');
