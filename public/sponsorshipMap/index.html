@@ -21,7 +21,6 @@
             <div id="dismiss">
                 <i class="fas fa-arrow-left"></i>
             </div>
-
             <div class="sidebar-header">
                 <h3><a href="../main/index.html">소.후.모</a></h3>
             </div>
@@ -33,13 +32,22 @@
                         <i class="fas fa-search"></i>
                     </button>
                 </form>
-            </div>
-            <ul class="location-list">
+                <div id="location-container">
+                    <ul id="location-list">
 
-            </ul>
+                    </ul>
+                </div>
+            </div>
+            <div id="move-home">
+                <a href="../main/index.html"><i class="fas fa-home"></i></a>
+            </div>
         </nav>
         <div id="content">
             <button type="button" class="btn btn-success location-btn" id="getMyPositionBtn">내 위치</button>
+            <div class="hAddr">
+                <span class="addr-title">지도중심기준 행정동 주소정보</span>
+                <span id="centerAddr"></span>
+            </div>
             <div id="map">
                 <button type="button" id="sidebarCollapse" class="btn btn-warning sidebar-btn">
                     <span><i class="fas fa-bars"></i></span>
