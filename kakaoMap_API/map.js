@@ -59,7 +59,7 @@ form.addEventListener('submit', (e) => {
     searchValue = inputDoc.value;
 
     if (searchValue == '') {
-        alert("다시 검색해주세요 :)"); // ㄴ
+        alert("다시 검색해주세요 :)"); 
     } else {
         // 키워드로 장소를 검색합니다
         ps.keywordSearch(searchValue, placesSearchCB);
