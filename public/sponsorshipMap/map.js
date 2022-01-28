@@ -15,7 +15,7 @@ function locationLoadSuccess(pos) {
     // 현재 위치 받아오기
     const currentPos = new kakao.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
 
-    console.log(currentPos);
+    geocoder.coord2RegionCode(currentPos.La, currentPos.Ma, getResult);
 
     // 지도 이동(기존 위치와 가깝다면 부드럽게 이동)
     map.panTo(currentPos);
@@ -33,6 +33,11 @@ function locationLoadSuccess(pos) {
 
 };
 
+function getResult(result, status) {
+    userLocation = result[0].address_name;
+    getNearbyUserLocation(userLocation.split(' ')[0]);
+}
+
 function locationLoadError(pos) {
     alert('위치 정보를 가져오는데 실패했습니다.');
 };
@@ -45,7 +50,6 @@ function getCurrentPosBtn() {
 const locationBtn = document.querySelector('.location-btn');
 locationBtn.addEventListener('click', () => {
     getCurrentPosBtn();
-    queryNearbyUserLocation();
 })
 
 // ----------------------------------------- 키워드로 장소검색 -----------------------------------------
@@ -192,7 +196,6 @@ function searchDetailAddrFromCoords(coords, callback) {
 // 지도 좌측상단에 지도 중심좌표에 대한 주소정보를 표출하는 함수입니다
 function displayCenterInfo(result, status) {
 
-    userLocation = result;
     if (status === kakao.maps.services.Status.OK) {
         var infoDiv = document.getElementById('centerAddr');
 
@@ -207,24 +210,92 @@ function displayCenterInfo(result, status) {
 }
 
 // ----------------------------------------- 현재 위치에서 얻은 주소로 open API의 행정동 단위 상가업소 조회 -----------------------------------------
-async function queryNearbyUserLocation() {
-    // console.log(userLocation); // displayCenterInfo가 더 빨리 실행되는 로직이므로 결과 확인가능
 
-    // const response = fetch(`${basicURL}?divId=ctprvnCd&key=11&numOfRows=500&pageNo=1&type=json&ServiceKey=${serviceKey}`);
+async function queryNearbyUserLocation(locationNum) {
+    const limit = 5; // 한번에 최대 1000개의 가게
+    const response = await fetch(`http://localhost:8080/locationSearch/${locationNum}/${limit}`);
+    // await을 안쓰면 promise객체 반환(pending fullfiled) -- 이후 then
+    // await 쓰면 response객체 반환 -- 이후 .json() 변환
+    console.log(response);
 
-
-    // return response.then(res => res.json());
+    return response;
 }
 
-async function getNearbyUserLocation() {
+async function getNearbyUserLocation(location) {
+
+    locationNum = handleLocationToNum(location);
 
     try {
-        const response = await queryNearbyUserLocation();
-        console.log(response);
+        const response = await queryNearbyUserLocation(locationNum);
+
+        response.json().then(
+            data => console.log(data.body.items)
+        )
+        // response.then(res => res.json()).then(json => console.log(json)); fetch해올때부터 await안 쓰면 사용
     } catch (error) {
         console.log(error);
     }
 }
 
+function handleLocationToNum(location) {
 
+    console.log(location);
+    switch (location) {
+        case '서울특별시':
+            return 11;
+        case '부산광역시':
+            return 26;
+        case '대구광역시':
+            return 27;
+        case '인천광역시':
+            return 28;
+        case '광주광역시':
+            return 29;
+        case '대전광역시':
+            return 30;
+        case '울산광역시':
+            return 31;
+        case '세종특별자치시':
+            return 36;
+        case '경기도':
+            return 41;
+        case '강원도':
+            return 42;
+        case '충청북도':
+            return 45;
+        case '충청남도':
+            return 44;
+        case '전라북도':
+            return 45;
+        case '전라남도':
+            return 46;
+        case '경상북도':
+            return 47;
+        case '경상남도':
+            return 48;
+        case '제주특별자치도':
+            return 50;
+        default:
+            return 'error';
+    }
+
+}
+
+// 11 : 서울특별시
+// 26 : 부산광역시
+// 27 : 대구광역시
+// 28 : 인천광역시
+// 29 : 광주광역시
+// 30 : 대전광역시
+// 31 : 울산광역시
+// 36 : 세종특별자치시
+// 41 : 경기도
+// 42 : 강원도
+// 43 : 충청북도
+//  44 : 충청남도
+// 45 : 전라북도
+// 46 : 전라남도
+// 47 : 경상북도
+// 48 : 경상남도
+// 50 : 제주특별자치도
 
