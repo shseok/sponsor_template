@@ -38,15 +38,27 @@ app.use('/sponsorshipMap', function (req, resp) {
     resp.sendFile(__dirname + '/public/sponsorshipMap/index.html');
 });
 
+app.get('/locationSearch/:locationNum/:limit', async (req, res) => {
+    const basicURL = "http://apis.data.go.kr/B553077/api/open/sdsc2/storeListInDong";
+    const serviceKey = "urjek0WtO%2FvvB9TbWitwIaRTZvfcfQI5rmMUToR%2FUSEBzoebVuc%2FKGCY28ySbmMmm2QzS9V9IIDD92bdTJ30fw%3D%3D";
+    const params = {
+        locationNum: req.params.locationNum,
+        limit: req.params.limit
+    }
 
-const basicURL = "http://apis.data.go.kr/B553077/api/open/sdsc2/storeListInDong";
-const serviceKey = "urjek0WtO%2FvvB9TbWitwIaRTZvfcfQI5rmMUToR%2FUSEBzoebVuc%2FKGCY28ySbmMmm2QzS9V9IIDD92bdTJ30fw%3D%3D";
-axios.get(`${basicURL}?divId=ctprvnCd&key=11&numOfRows=500&pageNo=1&type=json&ServiceKey=${serviceKey}`).then(res => console.log(res));
+    const response = await axios.get(`${basicURL}?divId=ctprvnCd&key=${params.locationNum}&numOfRows=${params.limit}&pageNo=1&type=json&ServiceKey=${serviceKey}`).catch(e => console.log(e));
 
+    // console.log(response.data.body);
+
+    res.send(response.data);
+    // res.json(response.data.body);
+})
+
+
+// -----------------------------------------------------------
 
 app.use(function (req, res, next) {
     res.status(404).send('Sorry cant find that!');
 });
-
 
 app.listen(8080, () => console.log("접속 확인 (ﾉ*･ω･)ﾉ"))
