@@ -35,8 +35,9 @@
 
 # 사용
 ```
-1. cd SWTemplate
+1. cd sponsor_template
 2. npm install
+  - npm 설치하셔합니
 3. npm run dev
 ```
 

@@ -41,7 +41,7 @@ app.use('/sponsorshipMap', function (req, resp) {
 
 const basicURL = "http://apis.data.go.kr/B553077/api/open/sdsc2/storeListInDong";
 const serviceKey = "urjek0WtO%2FvvB9TbWitwIaRTZvfcfQI5rmMUToR%2FUSEBzoebVuc%2FKGCY28ySbmMmm2QzS9V9IIDD92bdTJ30fw%3D%3D";
-axios.get(`${basicURL}?divId=ctprvnCd&key=11&numOfRows=500&pageNo=1&type=json&ServiceKey=${serviceKey}`).then(res => console.log(res));
+// axios.get(`${basicURL}?divId=ctprvnCd&key=11&numOfRows=500&pageNo=1&type=json&ServiceKey=${serviceKey}`).then(res => console.log(res));
 
 
 
