@@ -209,7 +209,9 @@ function displayCenterInfo(result, status) {
     }
 }
 
-// ----------------------------------------- 현재 위치에서 얻은 주소로 open API의 행정동 단위 상가업소 조회 -----------------------------------------
+// ----------------------------------------- 현재 위치에서 얻은 주소로 open API의 행정동 단위 상가업소 조회
+
+const recommendLocationList = document.getElementById('recommendation-list');
 
 async function queryNearbyUserLocation(locationNum) {
     const limit = 5; // 한번에 최대 1000개의 가게
@@ -229,12 +231,29 @@ async function getNearbyUserLocation(location) {
         const response = await queryNearbyUserLocation(locationNum);
 
         response.json().then(
-            data => console.log(data.body.items)
+            data => displayNearbyLocation(data.body.items)
         )
         // response.then(res => res.json()).then(json => console.log(json)); fetch해올때부터 await안 쓰면 사용
     } catch (error) {
         console.log(error);
     }
+}
+
+function displayNearbyLocation(locations) {
+    // console.log(locations);
+
+    locations.map(location => {
+        const elem = document.createElement("LI");
+        elem.classList.add('searched-location');
+        elem.innerHTML = `<div class="result-inner">
+            상호명: ${location.bizesNm} </br>
+            상권분류: ${location.indsLclsNm} </br>
+            도로명주소: ${location.rdnmAdr} </br>
+            지번주소: ${location.lnoAdr}</br>
+            </div>
+        `;
+        recommendLocationList.appendChild(elem);
+    })
 }
 
 function handleLocationToNum(location) {

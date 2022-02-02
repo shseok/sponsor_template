@@ -37,6 +37,7 @@ body{
     top: 15px;
     right: 10px;
     cursor: pointer;
+    border-radius: 4px;
     -webkit-transition: all 0.3s;
     -o-transition: all 0.3s;
     transition: all 0.3s;
@@ -225,6 +226,66 @@ a[data-toggle="collapse"] {
     display: block;
     margin-top: 2px;
     font-weight: normal;
+}
+
+.recommendation-container{
+    position: fixed;
+    top: 70px;
+    right: 0;
+    z-index: 2;
+    margin: 10px;
+    width: 300px;
+    height: 550px;
+    padding: 5px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 4px;
+}
+
+.recommend-header{
+    font-weight: bold;
+    display: block;
+    padding: 10px;
+}
+
+#recommendation-list{
+    padding: 5px 0px;
+    overflow-y: auto;
+    height: 90%;
+    margin-bottom: 0;
+}
+
+#recommendation-list::-webkit-scrollbar {
+    width: 5px;
+}
+
+#recommendation-list::-webkit-scrollbar-thumb {
+    background-color: #7272724a;
+    border-radius: 10px;
+}
+#recommendation-list::-webkit-scrollbar-track {
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+}
+
+#recommendation-list .searched-location{
+    margin-right: 10px;
+    border-bottom: 1px solid #7272724a
+}
+
+#recommendation-list .searched-location:last-child{
+    margin-right: 10px;
+    border-bottom: none;
+}
+
+#recommendation-list .searched-location .result-inner{
+    margin: 10px 0;
+    padding: 0 10px;
+}
+
+#recommendation-list .searched-location:first-child .result-inner {
+    margin-bottom: 10px;
+    margin-top: 0;
+    padding: 0 10px;
 }
 
 .bAddr {
