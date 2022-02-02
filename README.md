@@ -1,7 +1,7 @@
 # 목적
 소상공인을 위한 후원 플랫폼을 설계하고자 한다.
 
-# 구현해야할 기능
+# 추가될 기능
 ## 메인페이지
 - 후원자 순위
 - 실시간 소상공인현황
@@ -20,9 +20,6 @@
 - 사이드바 추가
 - 전체 색감 및 글꼴 변경
 
-# 에러
-- github pages deploy도중 failure
-
 # 참조
 ## 이미지 참조
 - https://undraw.co/illustrations
@@ -30,14 +27,14 @@
 - https://pixabay.com/ko/users/julientromeur-3630051/?tab=videos
 
 # third party middleware 사용
-- express middleware인 cors
+- express middleware's cors
 
 
 # 사용
 ```
 1. cd sponsor_template
 2. npm install
-  - npm 설치하셔합니
+  - npm 사전설치요구
 3. npm run dev
 ```
 

@@ -212,6 +212,8 @@ function displayCenterInfo(result, status) {
 // ----------------------------------------- 현재 위치에서 얻은 주소로 open API의 행정동 단위 상가업소 조회
 
 const recommendLocationList = document.getElementById('recommendation-list');
+// 마커 이미지의 이미지 주소
+var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
 
 async function queryNearbyUserLocation(locationNum) {
     const limit = 5; // 한번에 최대 1000개의 가게
@@ -240,11 +242,12 @@ async function getNearbyUserLocation(location) {
 }
 
 function displayNearbyLocation(locations) {
-    // console.log(locations);
+    console.log(locations);
 
     locations.map(location => {
         const elem = document.createElement("LI");
         elem.classList.add('searched-location');
+        createMarker(location);
         elem.innerHTML = `<div class="result-inner">
             상호명: ${location.bizesNm} </br>
             상권분류: ${location.indsLclsNm} </br>
@@ -254,6 +257,44 @@ function displayNearbyLocation(locations) {
         `;
         recommendLocationList.appendChild(elem);
     })
+}
+
+function createMarker(result) {
+    // 마커 이미지의 이미지 크기
+    var imageSize = new kakao.maps.Size(24, 35);
+    // 마커 이미지를 생성합니다    
+    var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
+
+    const position = new kakao.maps.LatLng(result.lat, result.lon);
+
+    // 마커를 생성합니다
+    var recomendMarker = new kakao.maps.Marker({
+        map: map, // 마커를 표시할 지도
+        position, // 마커를 표시할 위치
+        title: result.bizesNm, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
+        image: markerImage // 마커 이미지 
+    });
+
+    // 마커에 커서가 오버됐을 때 마커 위에 표시할 인포윈도우를 생성합니다
+    var iwContent = `<div style="padding:5px;">${recomendMarker.Gb}</div>`; // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+
+    // 인포윈도우를 생성합니다
+    var infowindow = new kakao.maps.InfoWindow({
+        content: iwContent
+    });
+
+    // 마커에 마우스오버 이벤트를 등록합니다
+    kakao.maps.event.addListener(recomendMarker, 'mouseover', function () {
+        // 마커에 마우스오버 이벤트가 발생하면 인포윈도우를 마커위에 표시합니다
+        infowindow.open(map, recomendMarker);
+    });
+
+    // 마커에 마우스아웃 이벤트를 등록합니다
+    kakao.maps.event.addListener(recomendMarker, 'mouseout', function () {
+        // 마커에 마우스아웃 이벤트가 발생하면 인포윈도우를 제거합니다
+        infowindow.close();
+    });
+    // console.log(recomendMarker);
 }
 
 function handleLocationToNum(location) {
@@ -299,22 +340,3 @@ function handleLocationToNum(location) {
     }
 
 }
-
-// 11 : 서울특별시
-// 26 : 부산광역시
-// 27 : 대구광역시
-// 28 : 인천광역시
-// 29 : 광주광역시
-// 30 : 대전광역시
-// 31 : 울산광역시
-// 36 : 세종특별자치시
-// 41 : 경기도
-// 42 : 강원도
-// 43 : 충청북도
-//  44 : 충청남도
-// 45 : 전라북도
-// 46 : 전라남도
-// 47 : 경상북도
-// 48 : 경상남도
-// 50 : 제주특별자치도
-
