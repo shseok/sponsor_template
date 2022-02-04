@@ -54,6 +54,16 @@ app.get('/locationSearch/:locationNum/:limit', async (req, res) => {
     // res.json(response.data.body);
 })
 
+// fetchData();
+
+// async function fetchData() {
+//     const response = await axios.get('/public/excel_to_json/data.json').catch(e => console.log(e));
+
+//     console.log(response);
+
+//     return response;
+// }
+
 
 // -----------------------------------------------------------
 

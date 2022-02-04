@@ -17,7 +17,7 @@ for col_num in range(1, sheet.max_column + 1):
 
 # from excel data to object data
 
-data_list = []
+data_list = []  # {}?
 for row_num in range(2, sheet.max_row + 1):
     tmp_dict = {}
     for col_num in range(1, sheet.max_column + 1):
