@@ -9,17 +9,54 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
         integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
     <title>Document</title>
 </head>
 
 <body>
+    <!-- Navigation-->
+    <a class="menu-toggle rounded" href="#"><i class="fas fa-bars"></i></a>
+    <nav id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+            <li class="sidebar-brand"><a href="#page-top">소 . 후 . 모</a></li>
+            <li class="sidebar-nav-item"><a href="#page-top">소개</a></li>
+            <li class="sidebar-nav-item"><a href="#about">후원순위</a></li>
+            <li class="sidebar-nav-item"><a href="../sponsorshipMap/index.html">후원하러가기</a></li>
+            <li class="sidebar-nav-item"><a href="#portfolio">후원내역보기</a></li>
+            <li class="sidebar-nav-item"><a href="#contact">연락하기</a></li>
+            <li class="sidebar-nav-item">
+                <a href="../login/main.html">로그인하기</a>
+            </li>
+        </ul>
+    </nav>
+    <!-- Responsive navbar-->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="../main/index.html">GAVOJA</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#!">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#!">Contact</a></li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Blog</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
     <div class="header">
         <h2>마이 페이지</h3>
     </div>
     <div class="container">
         <div class="side-container">
             <button class="withdraw">탈퇴하기</button>
-            <img class="user-image" src="user.svg" alt="user">
+            <img class="user-image" src="./assets/user.svg" alt="user">
             <p class="user-name"><strong>신현석</strong>님</p>
             <div class="point-container">
                 <div class="coin">
@@ -74,5 +111,9 @@
         </div>
     </div>
 </body>
+<!-- Bootstrap core JS-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Core theme JS-->
+<script src="./script.js"></script>
 
 </html>
