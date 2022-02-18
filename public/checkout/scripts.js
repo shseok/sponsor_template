@@ -28,3 +28,14 @@ window.addEventListener('DOMContentLoaded', event => {
     }
 
 })
+
+const counterUp = window.counterUp.default
+
+const el = document.querySelector('.counter')
+
+// Start counting, typically you need to call this when the 
+// element becomes visible, or whenever you like.
+counterUp(el, {
+    duration: 1000,
+    delay: 16,
+})
