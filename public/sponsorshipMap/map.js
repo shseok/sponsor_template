@@ -2,6 +2,8 @@ const markers = [];
 let userLocation = '';
 
 const mapContainer = document.getElementById('map') // 지도를 표시할 div
+const loading = document.querySelector('.loading');
+
 const mapOption = {
     center: new kakao.maps.LatLng(37.56646, 126.98121), // 지도의 중심좌표
     level: 3, // 지도의 확대 레벨
@@ -12,6 +14,7 @@ const mapOption = {
 const map = new kakao.maps.Map(mapContainer, mapOption);
 
 function locationLoadSuccess(pos) {
+    loading.classList.add('active');
     // 현재 위치 받아오기
     const currentPos = new kakao.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
 
@@ -250,11 +253,9 @@ async function getNearbyUserLocation(location) {// location = 영통구
     }
 }
 
-
-
 function displayNearbyLocation(locations) {
     // 2초의 fetch시간
-
+    loading.classList.remove('active');
 
     locations.map(location => {
         const elem = document.createElement("LI");
@@ -288,7 +289,9 @@ function createMarker(result) {
     });
 
     // 마커에 커서가 오버됐을 때 마커 위에 표시할 인포윈도우를 생성합니다
-    var iwContent = `<div style="padding:5px;">${recomendMarker.Gb}</div>`; // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+    var iwContent = `
+    <div style="padding:5px;">${recomendMarker.Gb}</div>
+    `; // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
 
     // 인포윈도우를 생성합니다
     var infowindow = new kakao.maps.InfoWindow({
@@ -298,6 +301,7 @@ function createMarker(result) {
     // 마커에 마우스오버 이벤트를 등록합니다
     kakao.maps.event.addListener(recomendMarker, 'mouseover', function () {
         // 마커에 마우스오버 이벤트가 발생하면 인포윈도우를 마커위에 표시합니다
+        console.log(recomendMarker);
         infowindow.open(map, recomendMarker);
     });
 
