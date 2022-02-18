@@ -46,9 +46,9 @@ app.get('/locationSearch/:locationNum/:limit', async (req, res) => {
         limit: req.params.limit
     }
 
-    const response = await axios.get(`${basicURL}?divId=ctprvnCd&key=${params.locationNum}&numOfRows=${params.limit}&pageNo=1&type=json&ServiceKey=${serviceKey}`).catch(e => console.log(e));
+    const response = await axios.get(`${basicURL}?divId=signguCd&key=${params.locationNum}&numOfRows=${params.limit}&pageNo=1&type=json&ServiceKey=${serviceKey}`).catch(e => console.log(e));
 
-    // console.log(response.data.body);
+    // console.log(response);
 
     res.send(response.data);
     // res.json(response.data.body);
